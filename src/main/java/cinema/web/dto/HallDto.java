@@ -9,6 +9,7 @@ public class HallDto {
 	private String hallName;
 	
 	private Set<ProjectionTypeDto> projectionTypes = new HashSet<>();
+	private Set<SeatDto> seats = new HashSet<>();
 	
 	
 	public HallDto() {
@@ -44,6 +45,18 @@ public class HallDto {
 	public void setProjectionTypes(Set<ProjectionTypeDto> projectionTypes) {
 		this.projectionTypes = projectionTypes;
 	}
+
+
+	public Set<SeatDto> getSeats() {
+		return seats;
+	}
+
+
+	public void setSeats(Set<SeatDto> seats) {
+		this.seats = seats;
+	}
+	
+	
 	
 	
 

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 
 import cinema.model.Hall;
 import cinema.model.ProjectionType;
+import cinema.model.Seat;
 import cinema.web.dto.HallDto;
 
 @Component
@@ -17,6 +18,8 @@ public class HallToHallDto implements Converter<Hall, HallDto> {
 	
 	@Autowired
 	private ProjectionTypeToProjectionTypeDto toPTDto;
+	@Autowired 
+	SeatToSeatDto toSeatDto;
 	
 	
 	@Override
@@ -27,6 +30,8 @@ public class HallToHallDto implements Converter<Hall, HallDto> {
 		dto.setHallName(source.getHallName());
 		List<ProjectionType> projectionTypes = new ArrayList<>(source.getProjectionTypes());
 		dto.setProjectionTypes(new HashSet<>(toPTDto.convert(projectionTypes)));
+		List<Seat> seats = new ArrayList<>(source.getSeats());
+		dto.setSeats(new HashSet<>(toSeatDto.convert(seats)));
 		
 		return dto;
 	}

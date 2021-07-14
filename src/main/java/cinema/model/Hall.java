@@ -24,6 +24,11 @@ public class Hall {
 	         inverseJoinColumns = @JoinColumn(name = "projectionType_id", referencedColumnName = "id"))
 	 private Set<ProjectionType> projectionTypes = new HashSet<>();
 	 
+	 @ManyToMany
+	 @JoinTable(name = "hall_seat", joinColumns = @JoinColumn (name = "hall_id", referencedColumnName = "id"),
+	         inverseJoinColumns = @JoinColumn(name = "seat_id", referencedColumnName = "id"))
+	 private Set<Seat> seats = new HashSet<>();
+	 
 	 
 	 public Hall() {
 		 
@@ -58,7 +63,20 @@ public class Hall {
 	public void setProjectionTypes(Set<ProjectionType> projectionTypes) {
 		this.projectionTypes = projectionTypes;
 	}
+
+
+	public Set<Seat> getSeats() {
+		return seats;
+	}
+
+
+	public void setSeats(Set<Seat> seats) {
+		this.seats = seats;
+	}
 	 
+	
+	
+	
 	 
 	
 
