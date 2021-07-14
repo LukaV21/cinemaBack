@@ -31,12 +31,12 @@ public class ProjectionType {
 	}
 
 
-	public String getProjectionName() {
+	public String getProjectionTypeName() {
 		return projectionTypeName;
 	}
 
 
-	public void setProjectionName(String projectionName) {
+	public void setProjectionTypeName(String projectionName) {
 		this.projectionTypeName = projectionName;
 	}
 	
