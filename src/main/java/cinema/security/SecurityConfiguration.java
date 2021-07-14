@@ -69,8 +69,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		.authorizeRequests()
 		.antMatchers(HttpMethod.POST, "/api/korisnici/auth")
 			.permitAll()
-		.antMatchers(HttpMethod.GET, "/api/linije")
-			 .permitAll()
 		.anyRequest().authenticated();
 ////				.anyRequest().permitAll();
 

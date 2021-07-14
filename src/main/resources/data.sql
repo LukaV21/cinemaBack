@@ -5,3 +5,10 @@ INSERT INTO korisnik (id, e_mail, korisnicko_ime, lozinka, ime, prezime, uloga)
 INSERT INTO korisnik (id, e_mail, korisnicko_ime, lozinka, ime, prezime, uloga)
               VALUES (3,'petar@maildrop.cc','petar','$2y$12$i6/mU4w0HhG8RQRXHjNCa.tG2OwGSVXb0GYUnf8MZUdeadE4voHbC','Petar','Jovic','KORISNIK');
 
+INSERT INTO `cinema`.`projection_type` (`id`, `projection_type_name`) 
+			  VALUES ('1', '2D');
+INSERT INTO `cinema`.`projection_type` (`id`, `projection_type_name`) 
+			  VALUES ('2', '3D');
+INSERT INTO `cinema`.`projection_type` (`id`, `projection_type_name`) 
+		      VALUES ('3', '4D');
+

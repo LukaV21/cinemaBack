@@ -74,12 +74,11 @@ public class KorisnikController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
 
-        // KorisnikRegistracijaDTO nasleđuje KorisnikDTO, pa možemo koristiti konverter za njega
-        // ostaje da dodatno konvertujemo polje kojeg u njemu nema - password
+ 
         Korisnik korisnik = toKorisnik.convert(dto);
         
 
-        // dodatak za zadatak 1
+
         String encodedPassword = passwordEncoder.encode(dto.getLozinka());
         korisnik.setLozinka(encodedPassword);
 
@@ -124,8 +123,7 @@ public class KorisnikController {
     @PreAuthorize("hasRole('KORISNIK')")
     @RequestMapping(value="/{id}", method = RequestMethod.PUT, params = "promenaLozinke")
     public ResponseEntity<Void> changePassword(@PathVariable Long id, @RequestBody KorisnikPromenaLozinkeDto dto){
-        // ova metoda se "okida" kada se primi PUT /korisnici?promenaLozinke
-        // pogrešno bi bilo mapirati na npr. PUT /korisnici/lozinke, pošto "lozinka" nije punopravan REST resurs!
+        
 
         if(!dto.getLozinka().equals(dto.getPonovljenaLozinka())) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
