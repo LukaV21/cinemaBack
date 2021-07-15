@@ -63,4 +63,11 @@ public class JpaMovieService implements MovieService {
 		return movies;
 	}
 
+	@Override
+	public Movie delete(Long id) {
+		Movie movie = mRepository.findOneById(id);
+		mRepository.deleteById(id);
+		return movie;
+	}
+
 }

@@ -15,4 +15,6 @@ public interface MovieRepository extends JpaRepository<Movie,Long>{
 	Page<Movie> findByMovieNameIgnoreCaseContainsAndGenresIgnoreCaseContainsAndDistributorIgnoreCaseContainsAndDurationBetweenAndOriginCountryIgnoreCaseContainsAndReleaseYearBetween(
 			String movieName, String genres, String distributor, Integer durationFrom, Integer durationTo,
 			String originCountry, Integer releaseYearFrom, Integer releaseYearTo, Pageable pageable);
+
+	Movie findOneById(Long id);
 }

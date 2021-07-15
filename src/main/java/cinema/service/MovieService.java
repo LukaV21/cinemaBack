@@ -10,4 +10,6 @@ public interface MovieService {
 			Integer durationTo, String originCountry, Integer releaseYearFrom, Integer releaseYearTo, int pageNo,
 			Boolean paginiraj);
 
+	Movie delete(Long id);
+
 }
