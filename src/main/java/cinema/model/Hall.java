@@ -1,15 +1,20 @@
 package cinema.model;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.JoinColumn;
 
 @Entity
@@ -28,6 +33,9 @@ public class Hall {
 	 @JoinTable(name = "hall_seat", joinColumns = @JoinColumn (name = "hall_id", referencedColumnName = "id"),
 	         inverseJoinColumns = @JoinColumn(name = "seat_id", referencedColumnName = "id"))
 	 private Set<Seat> seats = new HashSet<>();
+	 
+	 @OneToMany(mappedBy = "hall", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	 private List<Projection> projections = new ArrayList<>();
 	 
 	 
 	 public Hall() {
@@ -73,6 +81,18 @@ public class Hall {
 	public void setSeats(Set<Seat> seats) {
 		this.seats = seats;
 	}
+
+
+	public List<Projection> getProjections() {
+		return projections;
+	}
+
+
+	public void setProjections(List<Projection> projections) {
+		this.projections = projections;
+	}
+	
+	
 	 
 	
 	
