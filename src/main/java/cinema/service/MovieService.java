@@ -16,4 +16,6 @@ public interface MovieService {
 
 	Movie save(Movie movie);
 
+	Movie update(Movie movie);
+
 }

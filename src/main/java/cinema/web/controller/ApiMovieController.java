@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -95,6 +96,20 @@ public class ApiMovieController {
         Movie savedMovie = mService.save(movie);
 
         return new ResponseEntity<>(toDto.convert(savedMovie), HttpStatus.CREATED);
+    }
+	
+	@PreAuthorize("hasRole('ADMIN')")
+    @PutMapping(value = "/{id}",consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<MovieDto> update(@PathVariable Long id, @Valid @RequestBody MovieDto dto){
+
+        if(!id.equals(dto.getId())) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+
+        Movie movie = toMovie.convert(dto);
+        Movie savedMovie = mService.update(movie);
+
+        return new ResponseEntity<>(toDto.convert(savedMovie),HttpStatus.OK);
     }
 
 }

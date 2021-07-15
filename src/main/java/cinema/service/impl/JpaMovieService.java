@@ -86,4 +86,9 @@ public class JpaMovieService implements MovieService {
 		return mRepository.save(movie);
 	}
 
+	@Override
+	public Movie update(Movie movie) {
+		return mRepository.save(movie);
+	}
+
 }
