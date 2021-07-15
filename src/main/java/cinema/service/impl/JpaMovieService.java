@@ -81,4 +81,9 @@ public class JpaMovieService implements MovieService {
 		else return mRepository.findOneByIdAndDeletedFalse(id);
 	}
 
+	@Override
+	public Movie save(Movie movie) {
+		return mRepository.save(movie);
+	}
+
 }

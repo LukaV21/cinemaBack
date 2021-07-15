@@ -3,16 +3,21 @@ package cinema.web.controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import cinema.model.Movie;
 import cinema.service.MovieService;
+import cinema.support.MovieDtoToMovie;
 import cinema.support.MovieToMovieDto;
 import cinema.web.dto.MovieDto;
 
 import java.util.List;
+
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -30,6 +35,8 @@ public class ApiMovieController {
 	private MovieService mService;
 	@Autowired
 	private MovieToMovieDto toDto;
+	@Autowired
+	private MovieDtoToMovie toMovie;
 	
 	
 	
@@ -79,6 +86,15 @@ public class ApiMovieController {
         }else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+    }
+	
+	@PreAuthorize("hasRole('ADMIN')")
+	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<MovieDto> create(@Valid @RequestBody MovieDto dto){
+        Movie movie = toMovie.convert(dto);
+        Movie savedMovie = mService.save(movie);
+
+        return new ResponseEntity<>(toDto.convert(savedMovie), HttpStatus.CREATED);
     }
 
 }

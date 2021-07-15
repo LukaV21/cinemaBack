@@ -14,4 +14,6 @@ public interface MovieService {
 
 	Movie findOne(Long id);
 
+	Movie save(Movie movie);
+
 }
