@@ -12,4 +12,6 @@ public interface MovieService {
 
 	Movie delete(Long id);
 
+	Movie findOne(Long id);
+
 }

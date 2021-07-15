@@ -69,5 +69,16 @@ public class ApiMovieController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+	
+	@GetMapping("/{id}")
+    public ResponseEntity<MovieDto> getOne(@PathVariable Long id){
+       Movie movie = mService.findOne(id);
+
+        if(movie != null) {
+            return new ResponseEntity<>(toDto.convert(movie), HttpStatus.OK);
+        }else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 
 }

@@ -3,6 +3,8 @@ package cinema.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
@@ -68,6 +70,15 @@ public class JpaMovieService implements MovieService {
 		Movie movie = mRepository.findOneById(id);
 		mRepository.deleteById(id);
 		return movie;
+	}
+
+	@Override
+	public Movie findOne(Long id) {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		if (auth != null && auth.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN"))) {
+		    return mRepository.findOneById(id);
+		}
+		else return mRepository.findOneByIdAndDeletedFalse(id);
 	}
 
 }
