@@ -2,6 +2,7 @@ package cinema.model;
 
 import java.time.LocalDateTime;
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,7 +10,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import org.hibernate.annotations.Filter;
+import org.hibernate.annotations.FilterDef;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.ParamDef;
+
 @Entity
+@SQLDelete(sql = "UPDATE projection SET deleted = true WHERE id=?")
+@FilterDef(name = "deletedProjectionFilter", parameters = @ParamDef(name = "isDeleted", type = "boolean"))
+@Filter(name = "deletedProjectionFilter", condition = "deleted = :isDeleted")
 public class Projection {
 	
 	@Id
@@ -29,6 +38,8 @@ public class Projection {
 	private double ticketPrice;	
 	@Column
     private String admin;
+	@Column
+	private boolean deleted = Boolean.FALSE;
 	
 	public Projection() {}
 
@@ -95,6 +106,16 @@ public class Projection {
 	public void setAdmin(String admin) {
 		this.admin = admin;
 	}
+
+	public boolean isDeleted() {
+		return deleted;
+	}
+
+	public void setDeleted(boolean deleted) {
+		this.deleted = deleted;
+	}
+	
+	
 	
 	
 

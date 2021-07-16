@@ -81,14 +81,14 @@ INSERT INTO `cinema`.`movie` (`id`, `actors`, `deleted`, `description`, `directo
 	VALUES ('4', 'John C. Reilly, Sarah Silverman, Jack McBrayer', FALSE, 'A video game villain wants to be a hero and sets out to fulfill his dream, but his quest brings havoc to the whole arcade where he lives.', 'Rich Moore', 'Walt Disney Studios Motion Pictures', '101', 'Animation, Adventure, Comedy', 'Wreck-It Ralph','USA', '2012 ');
 
 
-INSERT INTO `cinema`.`projection` (`id`, `admin`, `date_and_time`, `date_and_time_end`, `ticket_price`, `hall_id`, `movie_id`, `projection_type_id`) 
-	VALUES ('1', 'miroslav', '2021-06-23 20:00:00', '2021-06-23 23:25:00', '10', '1', '1', '1');
+INSERT INTO `cinema`.`projection` (`id`, `admin`, `date_and_time`, `date_and_time_end`, `ticket_price`, `hall_id`, `movie_id`, `projection_type_id`, `deleted`) 
+	VALUES ('1', 'miroslav', '2021-06-23 20:00:00', '2021-06-23 23:25:00', '10', '1', '1', '1', FALSE);
 
-INSERT INTO `cinema`.`projection` (`id`, `admin`, `date_and_time`, `date_and_time_end`, `ticket_price`, `hall_id`, `movie_id`, `projection_type_id`) 
-	VALUES ('2', 'miroslav', '2021-08-23 14:00:00', '2021-08-23 15:34:00', '7', '3', '3', '1');
+INSERT INTO `cinema`.`projection` (`id`, `admin`, `date_and_time`, `date_and_time_end`, `ticket_price`, `hall_id`, `movie_id`, `projection_type_id`, `deleted`) 
+	VALUES ('2', 'miroslav', '2021-08-23 14:00:00', '2021-08-23 15:34:00', '7', '3', '3', '1', FALSE);
 
-INSERT INTO `cinema`.`projection` (`id`, `admin`, `date_and_time`, `date_and_time_end`, `ticket_price`, `hall_id`, `movie_id`, `projection_type_id`)
-	VALUES ('3', 'miroslav', '2021-09-14 10:00:00', '2021-09-14 11:41:00', '15', '2', '4', '2');
+INSERT INTO `cinema`.`projection` (`id`, `admin`, `date_and_time`, `date_and_time_end`, `ticket_price`, `hall_id`, `movie_id`, `projection_type_id`, `deleted`)
+	VALUES ('3', 'miroslav', '2021-09-14 10:00:00', '2021-09-14 11:41:00', '15', '2', '4', '2', FALSE);
 
 
 
