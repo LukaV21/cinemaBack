@@ -87,4 +87,10 @@ public class JpaProjectionService implements ProjectionService{
 		
 	}
 
+
+	@Override
+	public Projection update(Projection projection) {
+		return pRepository.save(projection);
+	}
+
 }

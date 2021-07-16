@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -95,6 +96,20 @@ public class ApiProjectionsController {
         Projection savedProjection = pService.save(projection);
 
         return new ResponseEntity<>(toDto.convert(savedProjection), HttpStatus.CREATED);
+    }
+	
+	@PreAuthorize("hasRole('ADMIN')")
+    @PutMapping(value = "/{id}",consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<ProjectionDto> update(@PathVariable Long id, @Valid @RequestBody ProjectionDto dto, Authentication authentication){
+		dto.setAdmin(authentication.getName());
+        if(!id.equals(dto.getId())) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+
+        Projection projection = toProjection.convert(dto);
+        Projection savedProjection = pService.update(projection);
+
+        return new ResponseEntity<>(toDto.convert(savedProjection),HttpStatus.OK);
     }
 
 }

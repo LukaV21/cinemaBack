@@ -17,4 +17,6 @@ public interface ProjectionService {
 
 	Projection save(Projection projection);
 
+	Projection update(Projection projection);
+
 }
