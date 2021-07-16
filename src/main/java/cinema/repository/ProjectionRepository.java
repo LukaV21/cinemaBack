@@ -1,5 +1,8 @@
 package cinema.repository;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -26,5 +29,11 @@ public interface ProjectionRepository extends JpaRepository<Projection, Long> {
                             @Param("projectionTypeId") Long projectionTypeId, @Param("movieId") Long movieId, @Param("hallId") Long hallId, Pageable pageable);
 
 	Projection findOneById(Long id);
+
+	List<Projection> findByProjectionStartBetweenAndHallId(LocalDateTime projectionDate, LocalDateTime projectionEndDate,
+			Long hallId);
+
+	List<Projection> findByProjectionEndBetweenAndHallId(LocalDateTime projectionDate, LocalDateTime projectionEndDate,
+			Long hallId);
 
 }

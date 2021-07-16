@@ -20,4 +20,9 @@ public class JpaHallService implements HallService {
 		return hRepository.findAll();
 	}
 
+	@Override
+	public Hall findOne(Long hallId) {
+		return hRepository.findOneById(hallId);
+	}
+
 }

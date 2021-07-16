@@ -8,4 +8,6 @@ public interface ProjectionTypeService {
 
 	List<ProjectionType> findAll();
 
+	ProjectionType findOne(Long projectionTypeId);
+
 }

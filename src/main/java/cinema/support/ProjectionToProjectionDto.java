@@ -29,9 +29,9 @@ public class ProjectionToProjectionDto implements Converter<Projection, Projecti
 		dto.setHallId(source.getHall().getId());
 		dto.setHallName(source.getHall().getHallName());
 		
-		dto.setDateAndTime(source.getDateAndTime().toString());
-		LocalDateTime end = source.getDateAndTime().plusMinutes(Long.valueOf(source.getMovie().getDuration()));
-		dto.setDateAndTimeEnd(end.toString());
+		dto.setProjectionStart(source.getProjectionStart().toString());
+		LocalDateTime end = source.getProjectionStart().plusMinutes(Long.valueOf(source.getMovie().getDuration()));
+		dto.setProjectionEnd(end.toString());
 		dto.setAdmin(source.getAdmin());
 		dto.setTicketPrice(source.getTicketPrice());
 		

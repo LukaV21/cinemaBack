@@ -8,4 +8,6 @@ import cinema.model.ProjectionType;
 @Repository
 public interface ProjectionTypeRepository extends JpaRepository<ProjectionType, Long> {
 
+	ProjectionType findOneById(Long projectionTypeId);
+
 }

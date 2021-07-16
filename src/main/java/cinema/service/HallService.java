@@ -8,4 +8,6 @@ public interface HallService {
 
 	List<Hall> findAll();
 
+	Hall findOne(Long hallId);
+
 }

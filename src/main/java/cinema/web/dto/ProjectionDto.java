@@ -14,8 +14,8 @@ public class ProjectionDto {
 	private Long hallId;
 	private String hallName;
 	
-	private String dateAndTime;
-	private String dateAndTimeEnd;
+	private String projectionStart;
+	private String projectionEnd;
 
 	private Double ticketPrice;
 	private String admin;
@@ -78,20 +78,22 @@ public class ProjectionDto {
 		this.hallName = hallName;
 	}
 
-	public String getDateAndTime() {
-		return dateAndTime;
+	
+
+	public String getProjectionStart() {
+		return projectionStart;
 	}
 
-	public void setDateAndTime(String dateAndTime) {
-		this.dateAndTime = dateAndTime;
+	public void setProjectionStart(String projectionStart) {
+		this.projectionStart = projectionStart;
 	}
 
-	public String getDateAndTimeEnd() {
-		return dateAndTimeEnd;
+	public String getProjectionEnd() {
+		return projectionEnd;
 	}
 
-	public void setDateAndTimeEnd(String dateAndTimeEnd) {
-		this.dateAndTimeEnd = dateAndTimeEnd;
+	public void setProjectionEnd(String projectionEnd) {
+		this.projectionEnd = projectionEnd;
 	}
 
 	public Double getTicketPrice() {

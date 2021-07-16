@@ -20,4 +20,9 @@ public class JpaProjectionTypeService implements ProjectionTypeService {
 		return ptRepository.findAll();
 	}
 
+	@Override
+	public ProjectionType findOne(Long projectionTypeId) {
+		return ptRepository.findOneById(projectionTypeId);
+	}
+
 }

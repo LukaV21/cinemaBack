@@ -31,9 +31,9 @@ public class Projection {
 	@ManyToOne
 	private Hall hall;
 	@Column
-	private LocalDateTime dateAndTime;
+	private LocalDateTime projectionStart;
 	@Column
-	private LocalDateTime dateAndTimeEnd;
+	private LocalDateTime projectionEnd;
 	@Column
 	private double ticketPrice;	
 	@Column
@@ -75,20 +75,24 @@ public class Projection {
 		this.hall = hall;
 	}
 
-	public LocalDateTime getDateAndTime() {
-		return dateAndTime;
+	
+
+
+
+	public LocalDateTime getProjectionStart() {
+		return projectionStart;
 	}
 
-	public void setDateAndTime(LocalDateTime dateAndTime) {
-		this.dateAndTime = dateAndTime;
+	public void setProjectionStart(LocalDateTime projectionStart) {
+		this.projectionStart = projectionStart;
 	}
 
-	public LocalDateTime getDateAndTimeEnd() {
-		return dateAndTimeEnd;
+	public LocalDateTime getProjectionEnd() {
+		return projectionEnd;
 	}
 
-	public void setDateAndTimeEnd(LocalDateTime dateAndTimeEnd) {
-		this.dateAndTimeEnd = dateAndTimeEnd;
+	public void setProjectionEnd(LocalDateTime projectionEnd) {
+		this.projectionEnd = projectionEnd;
 	}
 
 	public double getTicketPrice() {

@@ -13,4 +13,8 @@ public interface ProjectionService {
 
 	Projection delete(Long id);
 
+	Projection findOne(Long id);
+
+	Projection save(Projection projection);
+
 }

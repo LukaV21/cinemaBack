@@ -1,7 +1,10 @@
 package cinema.service.impl;
 
-import javax.persistence.EntityManager;
+import java.time.LocalDateTime;
+import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityNotFoundException;
 
 import org.hibernate.Filter;
 import org.hibernate.Session;
@@ -55,6 +58,33 @@ public class JpaProjectionService implements ProjectionService{
 		projection.setDeleted(true);
 		pRepository.deleteById(id);
 		return projection;
+	}
+
+
+	@Override
+	public Projection findOne(Long id) {
+		return pRepository.findOneById(id);
+	}
+
+
+	@Override
+	public Projection save(Projection projection) {
+		int movieDuration = projection.getMovie().getDuration();
+		
+		LocalDateTime projectionDate = projection.getProjectionStart();
+		LocalDateTime projectionEndDate = projectionDate.plusMinutes(movieDuration);
+		
+		Long hallId = projection.getHall().getId();
+		List<Projection> betweenStart = pRepository.findByProjectionStartBetweenAndHallId(projectionDate,projectionEndDate, hallId); 
+		List<Projection> betweenEnd = pRepository.findByProjectionEndBetweenAndHallId(projectionDate, projectionEndDate, hallId);
+		
+	
+		if (projectionDate.isBefore(LocalDateTime.now()) || !betweenStart.isEmpty() || !betweenEnd.isEmpty()){
+			throw new EntityNotFoundException();
+		}
+		return pRepository.save(projection);
+		
+		
 	}
 
 }
