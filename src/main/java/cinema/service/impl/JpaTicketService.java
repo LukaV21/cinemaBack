@@ -20,4 +20,14 @@ public class JpaTicketService implements TicketService{
 		return tRepository.findAll();
 	}
 
+	@Override
+	public Ticket save(Ticket ticket) {
+		return tRepository.save(ticket);
+	}
+
+	@Override
+	public Ticket findOne(Long id) {
+		return tRepository.findOneById(id);
+	}
+
 }

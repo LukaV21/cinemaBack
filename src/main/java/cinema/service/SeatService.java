@@ -8,4 +8,6 @@ public interface SeatService {
 
 	List<Seat> findAll();
 
+	Seat findOne(Long seatId);
+
 }

@@ -8,4 +8,8 @@ public interface TicketService {
 
 	List<Ticket> findAll();
 
+	Ticket save(Ticket ticket);
+
+	Ticket findOne(Long id);
+
 }

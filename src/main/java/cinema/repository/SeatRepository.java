@@ -8,4 +8,6 @@ import cinema.model.Seat;
 @Repository
 public interface SeatRepository extends JpaRepository<Seat, Long> {
 
+	Seat findOneById(Long seatId);
+
 }

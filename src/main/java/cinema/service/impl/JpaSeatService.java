@@ -20,4 +20,9 @@ public class JpaSeatService implements SeatService {
 		return sRepository.findAll();
 	}
 
+	@Override
+	public Seat findOne(Long seatId) {
+		return sRepository.findOneById(seatId);
+	}
+
 }
